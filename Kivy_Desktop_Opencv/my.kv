@@ -1,0 +1,1081 @@
+<Manager>:
+    One:
+        id:one
+        name:"one"
+    Two:
+        id:two
+        name:"two"
+    Three:
+        id:three
+        name:"three"
+    Four:
+        id:four
+        name:"four"
+    Five:
+        id:five
+        name:"five"
+    Six:
+        id:six
+        name:"six"
+    Seven:
+        id:seven
+        name:"seven"
+    Eight:
+        id:eight
+        name:"eight"
+    Nine:
+        id:nine
+        name:"nine"
+    Ten:
+        id:ten
+        name:"ten"
+    Eleven:
+        id:eleven
+        name:"eleven"
+
+
+<One>:
+    MDToolbar:
+        title:"AI-Face"
+        pos_hint:{"top":1}
+        left_action_items:[["face-recognition"]]
+        right_action_items:[["human"]]
+        elevation:20
+    MDIcon:
+        icon:"face-recognition"
+        pos_hint: {"center_x": .5, "center_y": .7}
+        halign:"center"
+        font_size:150
+
+    MDLabel:
+        text:"Artificial-Intelligence Algorithms"
+        halign:"center"
+        font_size:'20dp'
+        bold: True
+
+    MDFillRoundFlatButton:
+        text:"Start"
+        pos_hint:{"center_x":0.5,"center_y":0.4}
+        on_press: 
+            root.manager.current = "two"
+            root.manager.transition.direction = 'left'
+
+
+    MDBottomAppBar:
+        MDToolbar:
+            title:""
+            type:"bottom"
+            left_action_items:[["human-handsdown"]]
+            mode:"center"
+            icon: 'hand'
+            on_action_button: app.dialog()
+
+<Two>:
+    MDBottomNavigation:
+        MDBottomNavigationItem:
+            name:"lbph"
+            text:"Conf"
+            icon:"content-save-settings"
+            MDNavigationLayout:
+                ScreenManager:
+                    Screen:
+                        MDToolbar:
+                            pos_hint:{"top":1}
+                            title:"Configration"
+                            elevation:20
+                            left_action_items:[["menu",lambda x:nav_drawer.set_state("open")]]
+                            right_action_items:[["face-recognition"]]
+                        MDTextField:
+                            id:generate
+                            hint_text:"enter ID"
+                            pos_hint:{"center_x":0.35,"center_y":0.8}
+                            mode:"rectangle"
+                            size_hint_x:0.6
+                            icon_right:"camera-plus"
+                            icon_right_color: app.theme_cls.primary_color
+                        
+                        MDTextField:
+                            id:generatevideo
+                            hint_text:"enter video"
+                            pos_hint:{"center_x":0.35,"center_y":0.7}
+                            mode:"rectangle"
+                            size_hint_x:0.6
+                            icon_right:"camera-plus"
+                            icon_right_color: app.theme_cls.primary_color
+
+                        MDRectangleFlatIconButton:
+                            icon:"camera-image"
+                            text:"Camera"
+                            pos_hint:{"center_x":0.85,"center_y":0.75}
+                            on_press: app.get_cv()
+
+                        MDTextField:
+                            id:yml
+                            hint_text:"enter Yaml"
+                            pos_hint:{"center_x":0.35,"center_y":0.6}
+                            mode:"rectangle"
+                            size_hint_x:0.6
+                            icon_right:"database-plus"
+                            icon_right_color: app.theme_cls.primary_color
+
+                        MDRectangleFlatIconButton:
+                            icon:"content-save"
+                            text:"YAML"
+                            pos_hint:{"center_x":0.85,"center_y":0.6}
+                            on_press: app.get_yml()
+                    
+                        MDTextField:
+                            id:frgenerate
+                            hint_text:"enter name-FR"
+                            pos_hint:{"center_x":0.35,"center_y":0.5}
+                            mode:"rectangle"
+                            size_hint_x:0.6
+                            icon_right:"camera-plus"
+                            icon_right_color: app.theme_cls.primary_color
+                            
+                        MDTextField:
+                            id:frgeneratevideo
+                            hint_text:"enter video-FR"
+                            pos_hint:{"center_x":0.35,"center_y":0.4}
+                            mode:"rectangle"
+                            size_hint_x:0.6
+                            icon_right:"camera-plus"
+                            icon_right_color: app.theme_cls.primary_color
+
+                        MDRectangleFlatIconButton:
+                            icon:"camera-image"
+                            text:"Camera"
+                            pos_hint:{"center_x":0.85,"center_y":0.45}
+                            on_press: app.get_fr()
+                        
+                MDNavigationDrawer:
+                    id: nav_drawer
+                    BoxLayout:
+                        orientation:"vertical"
+                        spacing:'5dp'
+                        padding:'5dp'
+                        Image:
+                            source: "5.jpg"
+                        MDLabel:
+                            text:"Abdallah kharoby"
+                            halign:"center"
+                            size_hint_y:None
+                            height:self.texture_size[1]
+
+                        MDLabel:
+                            text:"AI Python"   
+                            halign:"center"
+                            size_hint_y:None
+                            height:self.texture_size[1]
+                        
+                        ScrollView:
+                            MDList:
+                                OneLineIconListItem:
+                                    text:"Red"
+                                    on_press:app.check_color_red()
+                                    IconLeftWidget:
+                                        icon:"select-color"
+                                OneLineIconListItem:
+                                    text:"LightGreen"
+                                    on_press:app.check_color_ind()
+                                    IconLeftWidget:
+                                        icon:"select-color"
+                                OneLineIconListItem:
+                                    text:"DeepPurple"
+                                    on_press:app.check_color_purple()
+                                    IconLeftWidget:
+                                        icon: "select-color"
+                            
+                                OneLineIconListItem:
+                                    text:"Yellow"
+                                    on_press:app.check_color_yellow()
+                                    IconLeftWidget:
+                                        icon:"select-color"
+                        MDSwitch:
+                            id:switch
+                            text:"Theme"
+                            pos_hint:{"center_x":0.5,"y":0.3}
+                            on_active:app.show_data()
+        MDBottomNavigationItem:
+            name:"set"
+            text:"Forms"
+            icon:"form-select"
+            MDToolbar:
+                title:"Options"
+                elevation:20
+                left_action_items:[["form-select"]]
+                right_action_items:[["face-recognition"]]
+                pos_hint:{"top":1}
+            MDRectangleFlatIconButton:
+                icon:"face-recognition"
+                text:"Cascade-Algorithms"
+                size_hint_x:0.5
+                pos_hint:{"center_x":0.25,"center_y":0.8}
+                on_press:
+                    root.manager.current = "three"
+                    root.manager.transition.direction = "up"
+            MDRectangleFlatIconButton:
+                icon:"robot"
+                text:"Mediapipe-Algorithms"
+                size_hint_x:0.5
+                pos_hint:{"center_x":0.75,"center_y":0.8}
+                on_press:
+                    root.manager.current = "four"
+                    root.manager.transition.direction = "up"                                    
+            MDRectangleFlatIconButton:
+                icon:"console-network"
+                text:"Advanced-FaceDetection"
+                size_hint_x:0.5
+                pos_hint:{"center_x":0.25,"center_y":0.7}
+                on_press:
+                    root.manager.current = "five"
+                    root.manager.transition.direction = "up"
+            MDRectangleFlatIconButton:
+                icon:"emoticon-happy"
+                text:"Facial Recognition"
+                size_hint_x:0.5
+                pos_hint:{"center_x":0.75,"center_y":0.7}
+                on_press:
+                    root.manager.current = "six"
+                    root.manager.transition.direction = "up"
+            MDRectangleFlatIconButton:
+                icon:"toolbox"
+                text:"Control Tools"
+                size_hint_x:0.5
+                pos_hint:{"center_x":0.25,"center_y":0.6}
+                on_press:
+                    root.manager.current = "seven"
+                    root.manager.transition.direction = "up"
+            MDRectangleFlatIconButton:
+                icon:"chart-areaspline"
+                text:"Graph Study"
+                size_hint_x:0.5
+                pos_hint:{"center_x":0.75,"center_y":0.6}
+                on_press:
+                    root.manager.current = "eight"
+                    root.manager.transition.direction = "up"
+            MDRectangleFlatIconButton:
+                icon:"face-recognition"
+                text:"Face-Recognition"
+                size_hint_x:0.5
+                pos_hint:{"center_x":0.25,"center_y":0.5}
+                on_press:
+                    root.manager.current = "nine"
+                    root.manager.transition.direction = "up"
+            MDRectangleFlatIconButton:
+                icon:"hand"
+                text:"Hands-Algorithms"
+                size_hint_x:0.5
+                pos_hint:{"center_x":0.75,"center_y":0.5}
+                on_press:
+                    root.manager.current = "ten"
+                    root.manager.transition.direction = "up"
+            MDRectangleFlatIconButton:
+                icon:"robot"
+                text:"Cvzone"
+                size_hint_x:0.5
+                pos_hint:{"center_x":0.25,"center_y":0.4}
+                on_press:
+                    root.manager.current = "eleven"
+                    root.manager.transition.direction = "up"
+
+<Three>:
+    MDBottomNavigation:
+        MDBottomNavigationItem:
+            name:"lbph"
+            text:"LBPH"
+            icon:"face-recognition"
+            MDToolbar:
+                elevation:20
+                pos_hint:{"top":1}
+                title:"LBPH Recognition"
+                left_action_items:[["face-recognition"]]
+                right_action_items:[["home",lambda x:app.move()]]
+            MDTextField:
+                id:videonamelbph
+                hint_text:"enter video"
+                pos_hint:{"center_x":0.5,"center_y":0.8}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"video-account"
+                icon_right_color: app.theme_cls.primary_color
+            MDTextField:
+                id:lbphyml
+                hint_text:"enter Yaml"
+                pos_hint:{"center_x":0.5,"center_y":0.7}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"file-upload"
+                icon_right_color: app.theme_cls.primary_color
+            MDFloatingActionButton:
+                icon:"video"
+                text:"Recognize"
+                pos_hint:{"center_x":0.5,"center_y":0.58}
+                on_press: app.get_reco()
+            MDLabel:
+                text:"LBPH is an face recognition algorithm where you enter the yaml file you trained for a specific person and then you could recognize the face through real time video"
+                halign:"center"
+                font_size:'20dp'
+                pos_hint:{"center_y":0.4}
+                bold: True
+        MDBottomNavigationItem:
+            name:"cascade"
+            text:"Cascade"
+            icon:"face-recognition"
+            MDToolbar:
+                elevation:20
+                pos_hint:{"top":1}
+                title:"Frontal-Face Detection"
+                left_action_items:[["face-recognition"]]
+                right_action_items:[["home",lambda x:app.move()]]
+            MDTextField:
+                id:videoname
+                hint_text:"enter video"
+                pos_hint:{"center_x":0.5,"center_y":0.8}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"video-account"
+                icon_right_color: app.theme_cls.primary_color
+            MDFloatingActionButton:
+                icon:"video"
+                text:"Detect"
+                pos_hint:{"center_x":0.5,"center_y":0.67}
+                on_press: app.get_cas()
+            MDLabel:
+                text:"Viola-jones object detection is a strong algorithm for face detection using its cascade we can detect the frontal face in any real time video"
+                halign:"center"
+                font_size:'20dp'
+                pos_hint:{"center_y":0.5}
+                bold: True
+
+<Four>:
+    MDBottomNavigation:
+        MDBottomNavigationItem:
+            name:"medaiface"
+            text:"Face"
+            icon:"face-recognition"
+            MDToolbar:
+                elevation:20
+                pos_hint:{"top":1}
+                title:"Mediapie Face Detection"
+                left_action_items:[["face-recognition"]]
+                right_action_items:[["home",lambda x:app.move()]]
+            MDTextField:
+                id:medaifacevideo
+                hint_text:"enter video"
+                pos_hint:{"center_x":0.5,"center_y":0.8}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"video-account"
+                icon_right_color: app.theme_cls.primary_color
+            MDFloatingActionButton:
+                icon:"video"
+                text:"Face-Detect"
+                pos_hint:{"center_x":0.5,"center_y":0.65}
+                on_press: app.media_face()
+            MDLabel:
+                text:"Mediapipe is an AI platform made by google which gives us strong algorithms we can use it in ai section on of them is face detection which is a strong one"
+                halign:"center"
+                font_size:'20dp'
+                pos_hint:{"center_y":0.5}
+                bold: True
+        MDBottomNavigationItem:
+            name:"medaifacemesh"
+            text:"Face-Mesh"
+            icon:"face-recognition"
+            MDToolbar:
+                elevation:20
+                pos_hint:{"top":1}
+                title:"Mediapie Face Mesh"
+                left_action_items:[["face-recognition"]]
+                right_action_items:[["home",lambda x:app.move()]]
+            MDTextField:
+                id:medaifacemeshvideo
+                hint_text:"enter video"
+                pos_hint:{"center_x":0.5,"center_y":0.8}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"video-account"
+                icon_right_color: app.theme_cls.primary_color
+            MDFloatingActionButton:
+                icon:"video"
+                text:"Face-Mesh-Detect"
+                pos_hint:{"center_x":0.5,"center_y":0.65}
+                on_press: app.media_face_mesh()
+            MDLabel:
+                text:"Mediapipe is an AI platform made by google which gives us strong algorithms we can use it in ai section on of them is face mesh detection which is a strong one"
+                halign:"center"
+                font_size:'20dp'
+                pos_hint:{"center_y":0.5}
+                bold: True
+        MDBottomNavigationItem:
+            name:"mediahand"
+            text:"HAND"
+            icon:"hand"
+            MDToolbar:
+                elevation:20
+                pos_hint:{"top":1}
+                title:"Mediapie Hand Detection"
+                left_action_items:[["hand-right"]]
+                right_action_items:[["home",lambda x:app.move()]]
+            MDTextField:
+                id:medaihanddetection
+                hint_text:"enter video"
+                pos_hint:{"center_x":0.5,"center_y":0.8}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"handshake"
+                icon_right_color: app.theme_cls.primary_color
+            MDFloatingActionButton:
+                icon:"video"
+                text:"Hand-Detection"
+                pos_hint:{"center_x":0.5,"center_y":0.65}
+                on_press: app.media_hand()
+            MDLabel:
+                text:"Mediapipe is an AI platform made by google which gives us strong algorithms we can use it in ai section on of them is hand detection which is a strong one"
+                halign:"center"
+                font_size:'20dp'
+                pos_hint:{"center_y":0.5}
+                bold: True
+        MDBottomNavigationItem:
+            name:"mediapose"
+            text:"Pose"
+            icon:"human-handsup"
+            MDToolbar:
+                elevation:20
+                pos_hint:{"top":1}
+                title:"Mediapie Pose Detection"
+                left_action_items:[["human"]]
+                right_action_items:[["home",lambda x:app.move()]]
+            MDTextField:
+                id:mediapose
+                hint_text:"enter video"
+                pos_hint:{"center_x":0.5,"center_y":0.8}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"human-male"
+                icon_right_color: app.theme_cls.primary_color
+            MDFloatingActionButton:
+                icon:"video"
+                text:"Pose-Detection"
+                pos_hint:{"center_x":0.5,"center_y":0.65}
+                on_press: app.media_pose()
+            MDLabel:
+                text:"Mediapipe is an AI platform made by google which gives us strong algorithms we can use it in ai section on of them is pose detection which is a strong one"
+                halign:"center"
+                font_size:'20dp'
+                pos_hint:{"center_y":0.5}
+                bold: True
+
+<Five>:
+    MDBottomNavigation:
+        MDBottomNavigationItem:
+            name:"hog"
+            text:"Hog"
+            icon:"face-recognition"
+            MDToolbar:
+                elevation:20
+                pos_hint:{"top":1}
+                title:"HoG-Face-Detection"
+                left_action_items:[["face-recognition"]]
+                right_action_items:[["home",lambda x:app.move()]]
+            MDTextField:
+                id:hogvideo
+                hint_text:"enter video"
+                pos_hint:{"center_x":0.5,"center_y":0.8}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"video-account"
+                icon_right_color: app.theme_cls.primary_color
+            MDFloatingActionButton:
+                icon:"video"
+                text:"HoG-Detection"
+                pos_hint:{"center_x":0.5,"center_y":0.65}
+                on_press: app.hog_detect()
+            MDLabel:
+                text:"Hog is an advanced face detection algorithm which is widly used, it can detect the whole side of the face and it is easy to code it"
+                halign:"center"
+                font_size:'20dp'
+                pos_hint:{"center_y":0.5}
+                bold: True
+        MDBottomNavigationItem:
+            name:"deeplearn"
+            text:"DeepLearning"
+            icon:"face-recognition"
+            MDToolbar:
+                elevation:20
+                pos_hint:{"top":1}
+                title:"DeepLearn-Face-Detection"
+                left_action_items:[["face-recognition"]]
+                right_action_items:[["home",lambda x:app.move()]]
+            MDTextField:
+                id:deepvideo
+                hint_text:"enter video"
+                pos_hint:{"center_x":0.5,"center_y":0.8}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"video-account"
+                icon_right_color: app.theme_cls.primary_color
+            MDFloatingActionButton:
+                icon:"video"
+                text:"Deep-Learning-Detection"
+                pos_hint:{"center_x":0.5,"center_y":0.65}
+                on_press: app.deep_detect()
+            MDLabel:
+                text:"Deep learning is a face detection algorithm comes from neural network which detect the whole sides of the face with great fps it is a great algorithms"
+                halign:"center"
+                font_size:'20dp'
+                pos_hint:{"center_y":0.5}
+                bold: True
+        MDBottomNavigationItem:
+            name:"hogrecognize"
+            text:"HoGRecognize"
+            icon:"robot-industrial"
+            MDToolbar:
+                elevation:20
+                pos_hint:{"top":1}
+                title:"HoG-Recognition"
+                left_action_items:[["robot-industrial"]]
+                right_action_items:[["home",lambda x:app.move()]]
+            MDTextField:
+                id:hogrecname
+                hint_text:"enter video"
+                pos_hint:{"center_x":0.5,"center_y":0.8}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"robot-vacuum"
+                icon_right_color: app.theme_cls.primary_color
+            MDTextField:
+                id:hogyml
+                hint_text:"enter Yaml"
+                pos_hint:{"center_x":0.5,"center_y":0.7}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"file-upload"
+                icon_right_color: app.theme_cls.primary_color
+            MDFloatingActionButton:
+                icon:"video"
+                text:"Recognize"
+                pos_hint:{"center_x":0.5,"center_y":0.55}
+                on_press: app.hog_iden()
+            MDLabel:
+                text:"Hog is an advanced face detection algorithm which is widly used, it can detect the whole side of the face and it is easy to code it"
+                halign:"center"
+                font_size:'20dp'
+                pos_hint:{"center_y":0.4}
+                bold: True
+        MDBottomNavigationItem:
+            name:"deeprecognize"
+            text:"DeepRecognize"
+            icon:"robot-industrial"
+            MDToolbar:
+                elevation:20
+                pos_hint:{"top":1}
+                title:"DeepLearn-Recognition"
+                left_action_items:[["robot-industrial"]]
+                right_action_items:[["home",lambda x:app.move()]]
+            MDTextField:
+                id:deeprecognizevideo
+                hint_text:"enter video"
+                pos_hint:{"center_x":0.5,"center_y":0.8}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"robot-vacuum"
+                icon_right_color: app.theme_cls.primary_color
+            MDTextField:
+                id:deeprecognizeyml
+                hint_text:"enter Yaml"
+                pos_hint:{"center_x":0.5,"center_y":0.7}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"file-upload"
+                icon_right_color: app.theme_cls.primary_color
+            MDFloatingActionButton:
+                icon:"video"
+                text:"Recognize"
+                pos_hint:{"center_x":0.5,"center_y":0.55}
+                on_press: app.deep_reco_iden()
+            MDLabel:
+                text:"Deep learning is a face detection algorithm comes from neural network which detect the whole sides of the face with great fps it is a great algorithms"
+                halign:"center"
+                font_size:'20dp'
+                pos_hint:{"center_y":0.4}
+                bold: True
+
+<Six>:
+    MDBottomNavigation:
+        MDBottomNavigationItem:
+            name:"deepface"
+            text:"Deepface"
+            icon:"emoticon"
+            MDToolbar:
+                elevation:20
+                pos_hint:{"top":1}
+                title:"Deep-Face"
+                left_action_items:[["emoticon"]]
+                right_action_items:[["home",lambda x:app.move()]]
+            MDTextField:
+                id:deepfacevideo
+                hint_text:"enter video"
+                pos_hint:{"center_x":0.5,"center_y":0.8}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"emoticon-wink"
+                icon_right_color: app.theme_cls.primary_color
+            MDFloatingActionButton:
+                icon:"video"
+                text:"Deep-Face"
+                pos_hint:{"center_x":0.5,"center_y":0.65}
+                on_press: app.deep_face()
+            MDLabel:
+                text:"DeepFace is a strong facial recogntion algorithm made by google and consider one of the best"
+                halign:"center"
+                font_size:'20dp'
+                pos_hint:{"center_y":0.5}
+                bold: True
+        MDBottomNavigationItem:
+            name:"attention"
+            text:"Attention"
+            icon:"emoticon-excited"
+            MDToolbar:
+                elevation:20
+                pos_hint:{"top":1}
+                title:"Attention-Detection"
+                left_action_items:[["emoticon-excited"]]
+                right_action_items:[["home",lambda x:app.move()]]
+            MDTextField:
+                id:attenvideo
+                hint_text:"enter video"
+                pos_hint:{"center_x":0.5,"center_y":0.8}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"emoticon"
+                icon_right_color: app.theme_cls.primary_color
+            MDTextField:
+                id:attenyml
+                hint_text:"enter Yaml"
+                pos_hint:{"center_x":0.5,"center_y":0.7}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"file-upload"
+                icon_right_color: app.theme_cls.primary_color
+            MDFloatingActionButton:
+                icon:"video"
+                text:"Recognize"
+                pos_hint:{"center_x":0.5,"center_y":0.55}
+                on_press: app.atten_detect()
+            MDLabel:
+                text:"This algorithms gives us the attention rate with its average rate"
+                halign:"center"
+                font_size:'20dp'
+                pos_hint:{"center_y":0.4}
+                bold: True
+        MDBottomNavigationItem:
+            name:"deepattention"
+            text:"DeepAttention"
+            icon:"emoticon-neutral"
+            MDToolbar:
+                elevation:20
+                pos_hint:{"top":1}
+                title:"Deep-Attention-Detection"
+                left_action_items:[["emoticon-neutral"]]
+                right_action_items:[["home",lambda x:app.move()]]
+            MDTextField:
+                id:deepattenvid
+                hint_text:"enter video"
+                pos_hint:{"center_x":0.5,"center_y":0.8}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"emoticon-neutral"
+                icon_right_color: app.theme_cls.primary_color
+            MDTextField:
+                id:deepattenyml
+                hint_text:"enter Yaml"
+                pos_hint:{"center_x":0.5,"center_y":0.7}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"file-upload"
+                icon_right_color: app.theme_cls.primary_color
+            MDFloatingActionButton:
+                icon:"video"
+                text:"Recognize"
+                pos_hint:{"center_x":0.5,"center_y":0.55}
+                on_press: app.deep_atten()
+            MDLabel:
+                text:"This algorithms gives us the attention rate with its average rate but with deepface condition"
+                halign:"center"
+                font_size:'20dp'
+                pos_hint:{"center_y":0.4}
+                bold: True
+
+
+<Seven>:
+    MDBottomNavigation:    
+        MDBottomNavigationItem:
+            name:"roi"
+            text:"ROI"
+            icon:"crop"
+            MDToolbar:
+                elevation:20
+                pos_hint:{"top":1}
+                title:"Region Of interest"
+                left_action_items:[["crop-free"]]
+                right_action_items:[["home",lambda x:app.move()]]
+            MDTextField:
+                id:roivideo
+                hint_text:"enter video"
+                pos_hint:{"center_x":0.5,"center_y":0.8}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"crop-square"
+                icon_right_color: app.theme_cls.primary_color
+            MDTextField:
+                id:roinb
+                hint_text:"enter roi nb"
+                pos_hint:{"center_x":0.5,"center_y":0.7}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"crop"
+                icon_right_color: app.theme_cls.primary_color
+            MDFloatingActionButton:
+                icon:"video"
+                text:"Recognize"
+                pos_hint:{"center_x":0.5,"center_y":0.55}
+                on_press: app.get_roi()
+            MDLabel:
+                text:"Region of interest(ROI) is where you select a specific area of the video and make process inside the selected coordinates "
+                halign:"center"
+                font_size:'20dp'
+                pos_hint:{"center_y":0.4}
+                bold: True
+        
+        MDBottomNavigationItem:
+            name:"mouse"
+            text:"Mouse-Event"
+            icon:"crop"
+            MDToolbar:
+                elevation:20
+                pos_hint:{"top":1}
+                title:"Mouse-Event-Zone"
+                left_action_items:[["crop-free"]]
+                right_action_items:[["home",lambda x:app.move()]]
+            MDTextField:
+                id:mousevideo
+                hint_text:"enter video"
+                pos_hint:{"center_x":0.5,"center_y":0.8}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"crop-square"
+                icon_right_color: app.theme_cls.primary_color
+            MDFloatingActionButton:
+                icon:"video"
+                text:"Detect"
+                pos_hint:{"center_x":0.5,"center_y":0.65}
+                on_press: app.get_mouse()
+            MDLabel:
+                text:"Select zone using mouse event callback"
+                halign:"center"
+                font_size:'20dp'
+                pos_hint:{"center_y":0.5}
+                bold: True
+
+        MDBottomNavigationItem:
+            name:"timer"
+            text:"Timer"
+            icon:"timer"
+            MDToolbar:
+                elevation:20
+                pos_hint:{"top":1}
+                title:"TIme Module"
+                left_action_items:[["timer"]]
+                right_action_items:[["home",lambda x:app.move()]]
+            MDTextField:
+                id:timervideo
+                hint_text:"enter video"
+                pos_hint:{"center_x":0.5,"center_y":0.8}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"camera-timer"
+                icon_right_color: app.theme_cls.primary_color
+            MDTextField:
+                id:timernb
+                hint_text:"enter timer"
+                pos_hint:{"center_x":0.5,"center_y":0.7}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"timer"
+                icon_right_color: app.theme_cls.primary_color
+            MDFloatingActionButton:
+                icon:"video"
+                text:"Recognize"
+                pos_hint:{"center_x":0.5,"center_y":0.55}
+                on_press: app.get_time()
+            MDLabel:
+                text:"This section you can put timer for the process to take place, it called time module"
+                halign:"center"
+                font_size:'20dp'
+                pos_hint:{"center_y":0.4}
+                bold: True
+        MDBottomNavigationItem:
+            name:"fps"
+            text:"FPS"
+            icon:"image-frame"
+            MDToolbar:
+                elevation:20
+                pos_hint:{"top":1}
+                title:"Frame-Per-Sec"
+                left_action_items:[["image-frame"]]
+                right_action_items:[["home",lambda x:app.move()]]
+            MDTextField:
+                id:fpsvideo
+                hint_text:"enter video"
+                pos_hint:{"center_x":0.5,"center_y":0.8}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"image-frame"
+                icon_right_color: app.theme_cls.primary_color
+            MDFloatingActionButton:
+                icon:"video"
+                text:"Detect"
+                pos_hint:{"center_x":0.5,"center_y":0.65}
+                on_press: app.get_fps()
+            MDLabel:
+                text:"Frame Per Sec (FPS) means how many frame is there per second, it is very important concept in having a great result"
+                halign:"center"
+                font_size:'20dp'
+                pos_hint:{"center_y":0.5}
+                bold: True
+
+<Eight>:
+    MDBottomNavigation:    
+        MDBottomNavigationItem:
+            name:"motiongraph"
+            text:"Motion-Graph"
+            icon:"chart-box"
+            MDToolbar:
+                elevation:20
+                pos_hint:{"top":1}
+                title:"HoG-Face-Motion-Graph"
+                left_action_items:[["chart-box"]]
+                right_action_items:[["home",lambda x:app.move()]]
+            MDTextField:
+                id:hogmotion
+                hint_text:"enter video"
+                pos_hint:{"center_x":0.5,"center_y":0.8}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"chart-bell-curve"
+                icon_right_color: app.theme_cls.primary_color
+            MDFloatingActionButton:
+                icon:"video"
+                text:"Detect"
+                pos_hint:{"center_x":0.5,"center_y":0.65}
+                on_press: app.get_hog_motion()
+            MDLabel:
+                text:"This section will study your face motion display the output in a graph using hog face detection method"
+                halign:"center"
+                font_size:'20dp'
+                pos_hint:{"center_y":0.5}
+                bold: True
+        
+        MDBottomNavigationItem:
+            name:"averagegraph"
+            text:"Graph-Average"
+            icon:"chart-bell-curve"
+            MDToolbar:
+                elevation:20
+                pos_hint:{"top":1}
+                title:"Average-Attention-Graph"
+                left_action_items:[["chart-bell-curve"]]
+                right_action_items:[["home",lambda x:app.move()]]
+            MDTextField:
+                id:averagegraphvideo
+                hint_text:"enter video"
+                pos_hint:{"center_x":0.5,"center_y":0.8}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"chart-bell-curve"
+                icon_right_color: app.theme_cls.primary_color
+            MDTextField:
+                id:averagegraphyml
+                hint_text:"enter Yaml"
+                pos_hint:{"center_x":0.5,"center_y":0.7}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"file-upload"
+                icon_right_color: app.theme_cls.primary_color
+            MDFloatingActionButton:
+                icon:"video"
+                text:"Recognize"
+                pos_hint:{"center_x":0.5,"center_y":0.55}
+                on_press: app.average_graph()
+            MDLabel:
+                text:"This algorithms gives us the average attention rate display in a dynamic graph results"
+                halign:"center"
+                font_size:'20dp'
+                pos_hint:{"center_y":0.4}
+                bold: True
+
+<Nine>:
+    MDBottomNavigation:
+        MDBottomNavigationItem:
+            name:"facereco"
+            text:"Face-Recognition"
+            icon:"face-recognition"
+            MDToolbar:
+                elevation:20
+                pos_hint:{"top":1}
+                title:"Face-Recognition-Python"
+                left_action_items:[["face-recognition"]]
+                right_action_items:[["home",lambda x:app.move()]]
+            MDTextField:
+                id:frvideo
+                hint_text:"enter video"
+                pos_hint:{"center_x":0.5,"center_y":0.8}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"video-account"
+                icon_right_color: app.theme_cls.primary_color
+            MDFloatingActionButton:
+                icon:"video"
+                text:"Face-Detect"
+                pos_hint:{"center_x":0.5,"center_y":0.65}
+                on_press: app.fr_iden()
+            MDLabel:
+                text:"Face recognition is a python library that encode a saved images in a database and recognize the output face compared to the saved ones"
+                halign:"center"
+                font_size:'20dp'
+                pos_hint:{"center_y":0.5}
+                bold: True
+
+<Ten>:
+    MDBottomNavigation:
+        MDBottomNavigationItem:
+            name:"handcount"
+            text:"Hand-Counter"
+            icon:"hand-left"
+            MDToolbar:
+                elevation:20
+                pos_hint:{"top":1}
+                title:"Hand-Counter"
+                left_action_items:[["hand"]]
+                right_action_items:[["home",lambda x:app.move()]]
+            MDTextField:
+                id:handcountervideo
+                hint_text:"enter video"
+                pos_hint:{"center_x":0.5,"center_y":0.8}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"handshake"
+                icon_right_color: app.theme_cls.primary_color
+            MDFloatingActionButton:
+                icon:"video"
+                text:"Detect"
+                pos_hint:{"center_x":0.5,"center_y":0.67}
+                on_press: app.hand_count()
+            MDLabel:
+                text:"Calucalte the times of hand has been raised"
+                halign:"center"
+                font_size:'20dp'
+                pos_hint:{"center_y":0.5}
+                bold: True
+        MDBottomNavigationItem:
+            name:"handcountIden"
+            text:"Hand-Identification"
+            icon:"hand-right"
+            MDToolbar:
+                elevation:20
+                pos_hint:{"top":1}
+                title:"Hand-Counter-Identification"
+                left_action_items:[["hand"]]
+                right_action_items:[["home",lambda x:app.move()]]
+            MDTextField:
+                id:handcountIdentivideo
+                hint_text:"enter video"
+                pos_hint:{"center_x":0.5,"center_y":0.8}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"handshake"
+                icon_right_color: app.theme_cls.primary_color
+            MDTextField:
+                id:handcountidenyml
+                hint_text:"enter Yaml"
+                pos_hint:{"center_x":0.5,"center_y":0.7}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"file-upload"
+                icon_right_color: app.theme_cls.primary_color
+            MDFloatingActionButton:
+                icon:"video"
+                text:"Recognize"
+                pos_hint:{"center_x":0.5,"center_y":0.58}
+                on_press: app.hand_iden()
+            MDLabel:
+                text:"Move from the hand to pose to face identification to know which person raise his hand"
+                halign:"center"
+                font_size:'20dp'
+                pos_hint:{"center_y":0.4}
+                bold: True
+
+<Eleven>:
+    MDBottomNavigation:
+        MDBottomNavigationItem:
+            name:"cvzoneface"
+            text:"Face"
+            icon:"face-recognition"
+            MDToolbar:
+                elevation:20
+                pos_hint:{"top":1}
+                title:"Cvzone-Face-Detection"
+                left_action_items:[["face-recognition"]]
+                right_action_items:[["home",lambda x:app.move()]]
+            
+            MDTextField:
+                id:cvzonefacevideo
+                hint_text:"enter video"
+                pos_hint:{"center_x":0.5,"center_y":0.8}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"video-account"
+                icon_right_color: app.theme_cls.primary_color
+            MDFloatingActionButton:
+                icon:"video"
+                text:"Face-Detect"
+                pos_hint:{"center_x":0.5,"center_y":0.65}
+                on_press: app.cvzone_face()
+            MDLabel:
+                text:"Cvzone is an enhancment for medaipie algorithm which let us control mediapie much better"
+                halign:"center"
+                font_size:'20dp'
+                pos_hint:{"center_y":0.5}
+                bold: True
+            
+        MDBottomNavigationItem:
+            name:"cvzonehand"
+            text:"Hand"
+            icon:"hand"
+            MDToolbar:
+                elevation:20
+                pos_hint:{"top":1}
+                title:"Cvzone-Hand-Detection"
+                left_action_items:[["hand-left"]]
+                right_action_items:[["home",lambda x:app.move()]]
+            MDTextField:
+                id:cvzonehandvideo
+                hint_text:"enter video"
+                pos_hint:{"center_x":0.5,"center_y":0.8}
+                mode:"rectangle"
+                size_hint_x:0.6
+                icon_right:"handshake"
+                icon_right_color: app.theme_cls.primary_color
+            MDFloatingActionButton:
+                icon:"video"
+                text:"Face-Detect"
+                pos_hint:{"center_x":0.5,"center_y":0.65}
+                on_press: app.cvzone_hand()
+            MDLabel:
+                text:"Cvzone is an enhancment for medaipie algorithm which let us control mediapie much better"
+                halign:"center"
+                font_size:'20dp'
+                pos_hint:{"center_y":0.5}
+                bold: True
